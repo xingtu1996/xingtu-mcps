@@ -8,6 +8,10 @@
 
 `xingtu-mcps` 是行途开源矩阵的 **MCP 服务资产仓**。收录可独立部署的服务参考实现（长连接机器人 / MCP server 骨架），为 AI Agent 提供真实可用的工具能力。
 
+## 🧩 DeepSeek Harness（DSH）兼容
+
+本仓 MCP server 遵循标准 MCP（Model Context Protocol），可被 DeepSeek Harness 作为 **tools 插件**（MCP 客户端）直接挂载调用——DSH 的插件模型原生消费标准 MCP 服务，无需改写。
+
 ## Servers 清单
 
 | Server | 说明 | 状态 |
