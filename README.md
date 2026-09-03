@@ -2,7 +2,9 @@
 
 > 可部署的服务参考实现，供 AI Agent 工具调用。
 
-![MIT](https://img.shields.io/badge/license-MIT-green.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![MCP Servers](https://img.shields.io/badge/MCP%20servers-1-blue.svg)
+![Feishu Bot](https://img.shields.io/badge/feature-feishu%20bot-brightgreen.svg)
 
 ## 这是什么
 
