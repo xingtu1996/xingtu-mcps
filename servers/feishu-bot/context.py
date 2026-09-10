@@ -31,7 +31,7 @@ class ContextManager:
             if self._is_expired(chat_id):
                 self._contexts[chat_id] = []
             self._contexts[chat_id].append({"role": role, "content": content})
-            ***REMOVED*** 保留最近N条
+            # 保留最近N条
             if len(self._contexts[chat_id]) > CONTEXT_MAX_MESSAGES:
                 self._contexts[chat_id] = self._contexts[chat_id][-CONTEXT_MAX_MESSAGES:]
             self._timestamps[chat_id] = time.time()
@@ -43,5 +43,5 @@ class ContextManager:
             self._timestamps.pop(chat_id, None)
 
 
-***REMOVED*** 全局实例
+# 全局实例
 context_manager = ContextManager()

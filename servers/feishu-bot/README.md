@@ -1,12 +1,12 @@
-***REMOVED*** feishu-bot · 飞书长连接机器人（参考实现）
+# feishu-bot · 飞书长连接机器人（参考实现）
 
 > 一个可运行的飞书长连接机器人骨架：接收群聊消息、按命令回复、带 LLM 对话与上下文管理。
 
-***REMOVED******REMOVED*** 定位
+## 定位
 
 这是 `xingtu-mcps` 里的第一个**参考服务实现**。它本身是飞书 WebSocket 长连接机器人（非严格 MCP server），用于演示"一个真实可运行的服务长什么样"。接入 MCP 时可在此基础上包一层 MCP 工具适配。
 
-***REMOVED******REMOVED*** 结构
+## 结构
 
 | 文件 | 说明 |
 |------|------|
@@ -17,25 +17,25 @@
 | llm.py | LLM 对话封装（OpenAI 兼容格式）|
 | debug_ws.py | 长连接连通性调试脚本 |
 
-***REMOVED******REMOVED*** 运行
+## 运行
 
 ```bash
-***REMOVED*** 1. 配置环境变量（飞书开放平台应用凭证）
+# 1. 配置环境变量（飞书开放平台应用凭证）
 export FEISHU_APP_ID="你的AppID"
 export FEISHU_APP_SECRET="你的AppSecret"
-***REMOVED*** 可选：LLM 配置
+# 可选：LLM 配置
 export ARK_API_KEY="你的Key"
 export ARK_MODEL="doubao-1-5-pro-32k-250115"
 
-***REMOVED*** 2. 启动
+# 2. 启动
 python3 bot_longconn.py
 ```
 
-***REMOVED******REMOVED*** 安全
+## 安全
 
 - 所有密钥（飞书 AppID/Secret、LLM Key）**只从环境变量读取**，代码与配置不落盘
 - 系统提示词为占位示例，接入方可按自身场景改写
 
-***REMOVED******REMOVED*** MCP 适配方向
+## MCP 适配方向
 
 把 `commands.py` 的命令处理逻辑封装为 MCP tools（`mcp.tool()` 装饰器），即可把本机器人的能力暴露给任意 MCP 客户端。示例见仓库根 README 的适配说明。

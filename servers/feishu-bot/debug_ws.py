@@ -1,4 +1,4 @@
-***REMOVED***!/usr/bin/env python3
+#!/usr/bin/env python3
 """调试飞书长连接"""
 import sys
 import traceback
@@ -46,7 +46,7 @@ try:
     )
     print("   ws.Client 创建成功，启动 start()...")
     print("   (如果连接成功，会看到 DEBUG 日志；等待10秒看是否有消息)")
-    ***REMOVED*** start() 是阻塞的，用线程跑
+    # start() 是阻塞的，用线程跑
     import threading
     t = threading.Thread(target=ws.start, daemon=True)
     t.start()

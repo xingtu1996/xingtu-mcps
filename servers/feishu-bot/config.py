@@ -3,19 +3,19 @@ import os
 import json
 from pathlib import Path
 
-***REMOVED*** 飞书应用配置 —— 密钥一律走环境变量，不硬编码
+# 飞书应用配置 —— 密钥一律走环境变量，不硬编码
 FEISHU_APP_ID = os.environ.get("FEISHU_APP_ID", "")
 FEISHU_APP_SECRET = os.environ.get("FEISHU_APP_SECRET", "")
 BOT_NAME = "行途小助"
 
-***REMOVED*** 项目路径
+# 项目路径
 BASE_DIR = Path(__file__).parent
 LOG_DIR = BASE_DIR / "logs"
 DATA_DIR = BASE_DIR / "data"
 LOG_DIR.mkdir(exist_ok=True)
 DATA_DIR.mkdir(exist_ok=True)
 
-***REMOVED*** LLM 配置（兼容 OpenAI 格式，火山方舟示例 endpoint）
+# LLM 配置（兼容 OpenAI 格式，火山方舟示例 endpoint）
 LLM_CONFIG = {
     "api_key": os.environ.get("ARK_API_KEY", ""),
     "base_url": os.environ.get("ARK_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3"),
@@ -24,7 +24,7 @@ LLM_CONFIG = {
     "max_tokens": 2000,
 }
 
-***REMOVED*** 系统提示词（占位示例：接入方可按自己的运营场景改写）
+# 系统提示词（占位示例：接入方可按自己的运营场景改写）
 SYSTEM_PROMPT = """你是「行途小助」，一位 AI 自媒体运营助手。
 
 职责：
@@ -47,7 +47,7 @@ SYSTEM_PROMPT = """你是「行途小助」，一位 AI 自媒体运营助手。
 - /clear 清空对话上下文
 """
 
-***REMOVED*** 群聊上下文保留条数
+# 群聊上下文保留条数
 CONTEXT_MAX_MESSAGES = 20
-***REMOVED*** 上下文过期时间（秒）
+# 上下文过期时间（秒）
 CONTEXT_TTL = 3600

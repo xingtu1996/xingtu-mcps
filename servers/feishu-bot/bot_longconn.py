@@ -1,4 +1,4 @@
-***REMOVED***!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 小途 - 飞书机器人长连接客户端
 接收群消息，@机器人时智能回复（LLM + 命令路由）
@@ -30,7 +30,7 @@ from context import context_manager
 from commands import handle_command
 import llm as llm_client
 
-***REMOVED*** 日志
+# 日志
 os.makedirs(LOG_DIR, exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
@@ -45,7 +45,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-***REMOVED*** 创建API客户端
+# 创建API客户端
 api_client = (
     lark.Client.builder()
     .app_id(FEISHU_APP_ID)
@@ -79,12 +79,12 @@ def send_text_message(chat_id: str, text: str):
 
 def get_smart_reply(chat_id: str, user_text: str) -> str:
     """获取智能回复（命令优先，其次LLM）。"""
-    ***REMOVED*** 1. 命令路由
+    # 1. 命令路由
     cmd_reply = handle_command(user_text, chat_id, "")
     if cmd_reply is not None:
         return cmd_reply
 
-    ***REMOVED*** 2. LLM对话
+    # 2. LLM对话
     if not LLM_CONFIG["api_key"]:
         return (
             f"【{BOT_NAME}】收到boss指令：{user_text}\n\n"
@@ -98,7 +98,7 @@ def get_smart_reply(chat_id: str, user_text: str) -> str:
     reply = llm_client.chat(messages)
 
     if reply:
-        ***REMOVED*** 保存上下文
+        # 保存上下文
         context_manager.add(chat_id, "user", user_text)
         context_manager.add(chat_id, "assistant", reply)
         return reply
@@ -117,11 +117,11 @@ def handle_message_event(event: P2ImMessageReceiveV1):
             logger.info(f"非文本消息，跳过: {msg_type}")
             return
 
-        ***REMOVED*** 解析消息内容
+        # 解析消息内容
         content = json.loads(msg.content)
         text = content.get("text", "")
 
-        ***REMOVED*** 判断是否@了机器人
+        # 判断是否@了机器人
         mentions = msg.mentions or []
         is_at_bot = False
         for mention in mentions:
@@ -129,14 +129,14 @@ def handle_message_event(event: P2ImMessageReceiveV1):
                 is_at_bot = True
                 break
 
-        ***REMOVED*** 单聊消息也处理
+        # 单聊消息也处理
         if chat_type == "p2p":
             is_at_bot = True
 
         if not is_at_bot:
             return
 
-        ***REMOVED*** 清理@标记（mention.key 格式为 @_user_N）
+        # 清理@标记（mention.key 格式为 @_user_N）
         clean_text = text
         for mention in mentions:
             clean_text = clean_text.replace(mention.key, "").strip()
@@ -144,7 +144,7 @@ def handle_message_event(event: P2ImMessageReceiveV1):
         sender_id = event.event.sender.sender_id.open_id
         logger.info(f"收到消息 chat={chat_id} text={clean_text}")
 
-        ***REMOVED*** 获取回复
+        # 获取回复
         reply = get_smart_reply(chat_id, clean_text)
         send_text_message(chat_id, reply)
 

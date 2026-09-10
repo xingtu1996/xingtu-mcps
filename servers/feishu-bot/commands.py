@@ -4,7 +4,7 @@ from datetime import datetime
 from context import context_manager
 from config import BOT_NAME
 
-***REMOVED*** 命令注册表
+# 命令注册表
 COMMANDS = {}
 
 
